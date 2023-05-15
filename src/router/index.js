@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import sourceData from '@/data.json'
 
 const routes = [
   {
@@ -17,8 +18,13 @@ const routes = [
       name: 'experience.show',
       component: () => import('@/views/ExperienceShow.vue'),
       props: route => ({...route.params})
-  }]
+    }]
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound.vue')
+} 
 ];
 
 const router = createRouter({
