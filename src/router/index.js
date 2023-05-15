@@ -12,12 +12,12 @@ const routes = [
     name: "destination.show",
     component: () => import("@/views/DestinationShow.vue"),
     props: route => ({...route.params}),
-  },
-  {
-    path: "/destination/:slug/:experienceSlug",
-    name: "experience.show",
-    component: () => import('@/views/ExperienceShow.vue'),
-    props: route => ({...route.params})
+    children: [{
+      path: ':experienceSlug',
+      name: 'experience.show',
+      component: () => import('@/views/ExperienceShow.vue'),
+      props: route => ({...route.params})
+  }]
   },
 ];
 
