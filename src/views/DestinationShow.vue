@@ -1,6 +1,7 @@
 <template>
     <section v-if="destination" class="destination">
         <h1>{{ destination.name }}</h1>
+        <TheButton class="go-back" @click="$router.back()">&lt;&lt; Go Back</TheButton>
         <div class="destination-details">
             <img :src="`/images/${destination.image}`" :alt="destination.name">
             <p>{{ destination.description }}</p>
@@ -22,9 +23,10 @@
 
 <script>
 import ExperienceCard from '@/components/ExperienceCard.vue'
+import TheButton from '@/components/TheButton.vue'
 
 export default {
-    components: {ExperienceCard},
+    components: {ExperienceCard, TheButton},
     data() {
         return {
             destination: ''
@@ -45,3 +47,11 @@ export default {
     }
 }
 </script>
+
+ <style scoped>
+ .go-back {
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 5px;
+ }
+</style>
