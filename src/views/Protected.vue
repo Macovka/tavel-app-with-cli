@@ -1,22 +1,25 @@
 <template>
     <div>
         <h1>Greetengs, {{ username }}</h1>
-        <button @click="logout">Log out</button>
+        <TheButton @click="logout">Log out</TheButton>
     </div>
 </template>
 
 <script>
+import TheButton from '@/components/TheButton.vue'
+
 export default {
-   data() {
-    return {
-        username: window.user
+    components: {TheButton},
+    data() {
+        return {
+            username: window.user
+        }
+    },
+    methods: {
+        logout() {
+            window.user = null
+            this.$router.push({name: 'login'})
+        }
     }
-   },
-   methods: {
-    logout() {
-        window.user = null
-        this.$router.push({name: 'home'})
-    }
-   }
 }
 </script>

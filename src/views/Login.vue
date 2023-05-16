@@ -6,13 +6,16 @@
             <input v-model="username" name="username" type="text" class="input">
             <label for="password">Password</label>
             <input v-model="password" name="password" type="text" class="input">
-            <button class="btn">Login</button>
+            <TheButton class="btn">Login</TheButton>
         </form>
     </div>
 </template>
 
 <script>
+import TheButton from '@/components/TheButton.vue'
+
 export default {
+    components: {TheButton},
     data() {
         return {
             username: '',

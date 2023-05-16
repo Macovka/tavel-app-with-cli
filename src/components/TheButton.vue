@@ -16,5 +16,9 @@ button {
 
 button:hover {
     background-color: #ddd;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+
 }
 </style>

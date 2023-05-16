@@ -53,6 +53,5 @@ export default {
  .go-back {
     background-color: #f1f1f1;
     color: black;
-    border-radius: 5px;
  }
 </style>
