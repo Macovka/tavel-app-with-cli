@@ -1,14 +1,15 @@
 <template>
     <nav id="nav">
-        <router-link id="logo" to="/">Travel App</router-link>
-        <router-link 
+        <AppLink id="logo" to="/">Travel App</AppLink>
+        <AppLink 
           v-for="destination in destinations"
           :key="destination.id"
           :to="{name: 'destination.show', params: {slug: destination.slug}}"
         >
             {{ destination.name }}
-        </router-link>
-        <router-link :to="{name: 'protected'}">Dashboard</router-link>
+        </AppLink>
+        <AppLink :to="{name: 'protected'}">Dashboard</AppLink>
+        <AppLink to="https://github.com/Macovka">GitHub Profile</AppLink>
       </nav>
 </template>
 
