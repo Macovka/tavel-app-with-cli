@@ -13,6 +13,17 @@ const routes = [
     name: "destination.show",
     component: () => import("@/views/DestinationShow.vue"),
     props: route => ({...route.params}),
+    beforeEnter(to, from) {
+      const exists = sourceData.destinations.find(
+        destination => destination.slug === to.params.slug
+      )
+      if(!exists) return {
+        name: 'NotFound',
+        params: { pathMatch: to.path.split('/').slice(1)},
+        query: to.query,
+        hash: to.hash,
+      }
+    },
     children: [{
       path: ':experienceSlug',
       name: 'experience.show',
