@@ -2,6 +2,9 @@
     <div>
         <h1>Greetengs, {{ username }}</h1>
         <TheButton @click="logout">Log out</TheButton>
+        <RouterLink :to="{name: 'invoices'}">
+            <TheButton>Invoices</TheButton>
+        </RouterLink>
     </div>
 </template>
 
