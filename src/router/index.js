@@ -41,6 +41,26 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({top: 0, behavior: 'smooth'})
+      }, 300)
+    })
+    /*if (!'#experience-show') {
+      return  {        
+        top: 0,
+        behavior: 'smooth'
+      }
+    } 
+    else {
+      return {
+        el: '#experience-show',
+        top: 0,
+        behavior: 'smooth'
+      }
+    }*/
+  }
 });
 
 export default router;
