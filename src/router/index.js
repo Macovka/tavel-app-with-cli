@@ -70,20 +70,23 @@ const router = createRouter({
         behavior: 'smooth'})
       }, 300)
     })*/
+    debugger
     if (!document.getElementById('experience-show')) {
+      debugger
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({top: 0, behavior: 'smooth'})
-        }, 300)
+        }, 200)
       })
     } 
     else {
+      debugger
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({el: '#experience-show',
           top: 0,
           behavior: 'smooth'})
-        }, 300)
+        }, 200)
       })
     }
   }

@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <the-navigation></the-navigation>
   <div class="container">
     <router-view />
@@ -10,9 +10,9 @@ import TheNavigation from '@/components/TheNavigation.vue';
 export default {
   components: {TheNavigation}
 }
-</script>
+</script>-->
 
-<!--<template>
+<template>
   <the-navigation></the-navigation>
   <div class="container">
     <router-view v-slot="{Component}">
@@ -33,10 +33,11 @@ export default {
 <style lang="css">
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.3s transform 0.5s;
+    transition: opacity .3s, transform 0.3s;
   }
   .fade-enter,
   .fade-leave-to {
     opacity: 0;
+    transform: translateX(-30%);
   }
-</style>-->
+</style>
