@@ -20,6 +20,15 @@ export default {
     async created() {
         await this.initData()
         this.$watch(() => this.$route.params, this.initData)
+    },
+    async updated() {
+        if (this.$route.name === 'experience.show') {
+            await this.$nextTick();
+            const experienceShowElement = document.getElementById('experience-show');
+            if (experienceShowElement) {
+                experienceShowElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     }, 
     methods: {
         async initData() {

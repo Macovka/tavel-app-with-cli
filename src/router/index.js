@@ -63,31 +63,18 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior (to, from, savedPosition) {
-    /*return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({el: '#experience-show',
-        top: 0,
-        behavior: 'smooth'})
-      }, 300)
-    })*/
-    debugger
-    if (!document.getElementById('experience-show')) {
-      debugger
-      return new Promise((resolve, reject) => {
+    if (to.name === 'experience.show') {
+      return new Promise((resolve) => {
         setTimeout(() => {
-          resolve({top: 0, behavior: 'smooth'})
-        }, 200)
-      })
-    } 
-    else {
-      debugger
-      return new Promise((resolve, reject) => {
+          resolve({ el: '#experience-show', behavior: 'smooth' });
+        }, 300);
+      });
+    } else {
+      return new Promise((resolve) => {
         setTimeout(() => {
-          resolve({el: '#experience-show',
-          top: 0,
-          behavior: 'smooth'})
-        }, 200)
-      })
+          resolve({ top: 0, behavior: 'smooth' });
+        }, 300);
+      });
     }
   }
 });
