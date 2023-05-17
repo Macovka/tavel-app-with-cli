@@ -8,30 +8,25 @@
 
 <script>
 export default {
-    data() {
-        return {
-            destination: ''
-        }
-    },
     props: {
         slug: {type: String, required: true},
         experienceSlug: {type: String, required: true}
     },
+    data() {
+        return {
+            experience: ''
+        }
+    },   
+    async created() {
+        await this.initData()
+        this.$watch(() => this.$route.params, this.initData)
+    }, 
     methods: {
         async initData() {
             const response = await fetch(`https://travel-dummy-api.netlify.app/${this.$route.params.slug}.json`)
-            this.destination = await response.json()
+            this.experience = (await response.json())?.experiences?.find(experience => experience.slug === this.experienceSlug);
         }
     },
-    async created() {
-        this.initData()
-        this.$watch(() => this.$route.params, this.initData)
-    },
-    computed: {
-        experience() {
-            return this.destination.experiences.find(experience => experience.slug === this.experienceSlug)
-        }
-    }
 }
         
 </script>
