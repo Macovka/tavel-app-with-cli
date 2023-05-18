@@ -35,15 +35,9 @@ const routes = [
     component: () => import("@/views/DestinationShow.vue"),
     props: route => ({...route.params}),
     beforeEnter(to, from) {
-      const exists = sourceData.destinations.find(
-        destination => destination.slug === to.params.slug
-      )
-      if(!exists) return {
-        name: 'NotFound',
-        params: { pathMatch: to.path.split('/').slice(1)},
-        query: to.query,
-        hash: to.hash,
-      } 
+      if(!isDestinationExists(to.params.slug)) {
+        return redirectToNotFound(to);
+      }
     },
     children: [
       {
@@ -52,18 +46,9 @@ const routes = [
         component: () => import('@/views/ExperienceShow.vue'),
         props: route => ({...route.params}),
         beforeEnter(to, from) {
-          const exists = sourceData.destinations.find(
-            destination => destination.slug === to.params.slug
-          );
-          const experienceExists = exists.experiences.some(
-            (experience) => experience.slug === to.params.experienceSlug
-          );
-          if(!experienceExists) return {
-            name: 'NotFound',
-            params: { pathMatch: to.path.split('/').slice(1)},
-            query: to.query,
-            hash: to.hash,
-          } 
+          if(!isExperienceExists(to.params.slug, to.params.experienceSlug)) {
+            return redirectToNotFound(to);
+          }
         },
       },
     ]
@@ -103,3 +88,32 @@ router.beforeEach((to, from) => {
 })
 
 export default router;
+
+function isDestinationExists(destinationSlug, to) {
+  const exists = sourceData.destinations.find(
+    destination => destination.slug === destinationSlug
+  );
+  return exists;
+}
+
+function isExperienceExists(destinationSlug, experienceSlug, to) {
+  const destinationExists = isDestinationExists(destinationSlug, to);
+  if (destinationExists) {
+    const destination = sourceData.destinations.find(
+      (destination) => destination.slug === destinationSlug
+    );
+    const experienceExists = destination.experiences.find(
+      (experience) => experience.slug === experienceSlug
+    );
+    return experienceExists;
+  }
+}
+
+function redirectToNotFound(to) {
+  return {
+    name: 'NotFound',
+    params: { pathMatch: to.path.split('/').slice(1) },
+    query: to.query,
+    hash: to.hash,
+  };
+}
