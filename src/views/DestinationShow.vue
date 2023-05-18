@@ -41,7 +41,7 @@ export default {
     methods: {
         async initData() {
             const response = await fetch(`https://travel-dummy-api.netlify.app/${this.$route.params.slug}.json`)
-            this.destination = await response.json()
+            this.destination = await response.json();
         }
     },
     async created() {

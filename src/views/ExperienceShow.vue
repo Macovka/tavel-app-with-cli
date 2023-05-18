@@ -14,7 +14,7 @@
     },
     data() {
       return {
-        experience: ''
+        experience: null
       };
     },
     async mounted() {

@@ -43,20 +43,36 @@ const routes = [
         params: { pathMatch: to.path.split('/').slice(1)},
         query: to.query,
         hash: to.hash,
-      }
+      } 
     },
-    children: [{
-      path: ':experienceSlug',
-      name: 'experience.show',
-      component: () => import('@/views/ExperienceShow.vue'),
-      props: route => ({...route.params})
-    }]
+    children: [
+      {
+        path: ':experienceSlug',
+        name: 'experience.show',
+        component: () => import('@/views/ExperienceShow.vue'),
+        props: route => ({...route.params}),
+        beforeEnter(to, from) {
+          const exists = sourceData.destinations.find(
+            destination => destination.slug === to.params.slug
+          );
+          const experienceExists = exists.experiences.some(
+            (experience) => experience.slug === to.params.experienceSlug
+          );
+          if(!experienceExists) return {
+            name: 'NotFound',
+            params: { pathMatch: to.path.split('/').slice(1)},
+            query: to.query,
+            hash: to.hash,
+          } 
+        },
+      },
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFound.vue')
-} 
+  } 
 ];
 
 const router = createRouter({
