@@ -97,16 +97,11 @@ function isDestinationExists(destinationSlug, to) {
 }
 
 function isExperienceExists(destinationSlug, experienceSlug, to) {
-  const destinationExists = isDestinationExists(destinationSlug, to);
-  if (destinationExists) {
-    const destination = sourceData.destinations.find(
-      (destination) => destination.slug === destinationSlug
-    );
-    const experienceExists = destination.experiences.find(
-      (experience) => experience.slug === experienceSlug
-    );
-    return experienceExists;
-  }
+  const destination = isDestinationExists(destinationSlug, to);
+  const experienceExists = destination.experiences.find(
+    (experience) => experience.slug === experienceSlug
+  );
+  return experienceExists;
 }
 
 function redirectToNotFound(to) {
