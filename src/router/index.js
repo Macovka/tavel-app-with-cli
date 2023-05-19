@@ -9,6 +9,10 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/home",
+    redirect: '/',
+  },
+  {
     path: '/protected',
     name: 'protected',
     components: {
