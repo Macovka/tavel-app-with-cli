@@ -2,7 +2,7 @@
     <div>
         <section v-if="destination" class="destination">
             <h1>{{ destination.name }}</h1>
-            <TheButton class="go-back" @click="$router.back()">&lt;&lt; Go Back</TheButton>
+            <BaseButton class="go-back" @click="$router.back()">&lt;&lt; Go Back</BaseButton>
             <div class="destination-details">
                 <img :src="`/images/${destination.image}`" :alt="destination.name">
                 <p>{{ destination.description }}</p>

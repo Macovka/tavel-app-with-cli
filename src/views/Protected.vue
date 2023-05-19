@@ -1,9 +1,9 @@
 <template>
     <div>
         <h1>Greetengs, {{ username }}</h1>
-        <TheButton @click="logout">Log out</TheButton>
+        <BaseButton @click="logout">Log out</BaseButton>
         <RouterLink :to="{name: 'invoices'}">
-            <TheButton>Invoices</TheButton>
+            <BaseButton>Invoices</BaseButton>
         </RouterLink>
     </div>
 </template>

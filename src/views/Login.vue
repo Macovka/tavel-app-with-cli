@@ -6,7 +6,7 @@
             <input v-model="username" name="username" type="text" class="input">
             <label for="password">Password</label>
             <input v-model="password" name="password" type="text" class="input">
-            <TheButton class="btn">Login</TheButton>
+            <BaseButton class="btn">Login</BaseButton>
         </form>
     </div>
 </template>
