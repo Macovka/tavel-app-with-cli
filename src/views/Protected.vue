@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="protected">
         <h1>Greetengs, {{ username }}</h1>
         <BaseButton @click="logout">Log out</BaseButton>
         <RouterLink :to="{name: 'invoices'}">

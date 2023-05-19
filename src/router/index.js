@@ -11,7 +11,10 @@ const routes = [
   {
     path: '/protected',
     name: 'protected',
-    component: () => import('@/views/Protected.vue'),
+    components: {
+      default: () => import('@/views/Protected.vue'),
+      LeftSidebar: () => import('@/components/LeftSidebar.vue'),
+    },
     meta: {
       requiresAuth: true,
     }
@@ -24,7 +27,10 @@ const routes = [
   {
     path: '/invoices',
     name: 'invoices',
-    component: () => import('@/views/Invoices.vue'),
+    components: {
+      default: () => import('@/views/Invoices.vue'),
+      LeftSidebar: () => import('@/components/LeftSidebar.vue'),
+    },
     meta: {
       requiresAuth: true,
     }
@@ -89,15 +95,15 @@ router.beforeEach((to, from) => {
 
 export default router;
 
-function isDestinationExists(destinationSlug, to) {
+function isDestinationExists(destinationSlug) {
   const exists = sourceData.destinations.find(
     destination => destination.slug === destinationSlug
   );
   return exists;
 }
 
-function isExperienceExists(destinationSlug, experienceSlug, to) {
-  const destination = isDestinationExists(destinationSlug, to);
+function isExperienceExists(destinationSlug, experienceSlug) {
+  const destination = isDestinationExists(destinationSlug);
   const experienceExists = destination.experiences.find(
     (experience) => experience.slug === experienceSlug
   );
