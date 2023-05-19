@@ -12,10 +12,7 @@
 </template>
 
 <script>
-import TheButton from '@/components/TheButton.vue'
-
 export default {
-    components: {TheButton},
     data() {
         return {
             username: '',

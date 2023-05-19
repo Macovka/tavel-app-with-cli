@@ -2,8 +2,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import AppLink from "./components/AppLink.vue";
+import TheButton from "./components/TheButton.vue";
 
-createApp(App)
-.component('AppLink', AppLink)
-.use(router)
-.mount("#app");
+const app = createApp(App);
+app.component('AppLink', AppLink);
+app.component('TheButton', TheButton);
+app.use(router);
+app.mount("#app");

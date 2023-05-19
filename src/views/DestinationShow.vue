@@ -26,10 +26,9 @@
 
 <script>
 import ExperienceCard from '@/components/ExperienceCard.vue'
-import TheButton from '@/components/TheButton.vue'
 
 export default {
-    components: {ExperienceCard, TheButton},
+    components: {ExperienceCard},
     data() {
         return {
             destination: ''
